@@ -8,7 +8,7 @@ class TicTacToe:
     def __init__(self):
         self.M = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
-    def __mostrar(self):
+    def __show(self):
         for i in self.M:
             for j in i:
                 if j == 0:
@@ -22,117 +22,117 @@ class TicTacToe:
                     "0\t",
             print
 
-    def jugarPersona(self):
-        i = int(input("Ingrese Fila: "))
-        j = int(input("Ingrese Columna: "))
+    def realPlayerTurn(self):
+        i = int(input("Enter Row: "))
+        j = int(input("Enter Column: "))
         if i > 2 or j > 2:
-            print("-----Fuera de Rango, elija otra!!!")
-            self.jugarPersona()
+            print("----->Out of bounds!!!Please choose another location<-----")
+            self.realPlayerTurn()
         elif self.M[i][j] == 0:
             self.M[i][j] = 1
         else:
-            print("-----Esa posicion ya esta ocupada, elige otra!!!")
+            print("----->This location is already taken, Please choose another location<-----")
 
-            self.jugarPersona()
+            self.realPlayerTurn()
 
-    def jugarMaquina(self):
+    def iaTurn(self):
         i = random.randint(0, 2)
         j = random.randint(0, 2)
         if self.M[i][j] == 0:
             self.M[i][j] = -1
         else:
-            self.jugarMaquina()
+            self.iaTurn()
 
-    def verificarEmpate(self):
+    def verifyDraw(self):
         listaAux = []
         listaAux.extend(self.M[0])
         listaAux.extend(self.M[1])
         listaAux.extend(self.M[2])
         return listaAux.count(0)
 
-    def contarFila(selft, M, dato):
+    def countRow(selft, M, dato):
         return M[0].count(dato) == 3 or M[1].count(dato) == 3 or M[2].count(dato) == 3
 
-    def mapearFilaColum(self, a, b, c):
+    def mapRowColumn(self, a, b, c):
         x = []
         x.append(a)
         x.append(b)
         x.append(c)
         return x
 
-    def verificarGanador(self):
-        ganaPersona = False
-        ganaMaquina = False
+    def verifyWinner(self):
+        realPlayerWin = False
+        iaPlayerWin = False
 
-        # verificando ganadores filas
-        ganaPersona = self.contarFila(self.M, 1)
-        ganaMaquina = self.contarFila(self.M, -1)
+        # verify winner by rows
+        realPlayerWin = self.countRow(self.M, 1)
+        iaPlayerWin = self.countRow(self.M, -1)
 
-        if ganaPersona:
-            print("Felicidades!!! Ganaste")
+        if realPlayerWin:
+            print("----->Congrats!!! you win!!<-----")
             return True
-        if ganaMaquina:
-            print("Perdiste!!! =(")
-            return True
-
-        # verificando columnas
-        matrizAux = list(map(self.mapearFilaColum, self.M[0], self.M[1], self.M[2]))
-
-        ganaPersona = self.contarFila(matrizAux, 1)
-        ganaMaquina = self.contarFila(matrizAux, -1)
-
-        if ganaPersona:
-            print("Felicidades!!! Ganaste")
-
-            return True
-        if ganaMaquina:
-            print("Perdiste!!! =(")
+        if iaPlayerWin:
+            print("----->You lost!! better luck next time<-----")
             return True
 
-        # verificando diagonales
-        matrizAux = []
+        # verify columns
+        matrixAux = list(map(self.mapRowColumn, self.M[0], self.M[1], self.M[2]))
+
+        realPlayerWin = self.countRow(matrixAux, 1)
+        iaPlayerWin = self.countRow(matrixAux, -1)
+
+        if realPlayerWin:
+            print("----->Congrats!!! you win!!<-----")
+
+            return True
+        if iaPlayerWin:
+            print("----->You lost!! better luck next time<-----")
+            return True
+
+        # verify diagonals
+        matrixAux = []
         listaCol = []
         for i in range(0, 3):
             listaCol.append(self.M[i][i])
-        matrizAux.append(listaCol)
+        matrixAux.append(listaCol)
 
         listaCol = []
         for i in range(0, 3):
             listaCol.append(self.M[i][2 - i])
-        matrizAux.append(listaCol)
+        matrixAux.append(listaCol)
 
-        ganaPersona = matrizAux[0].count(1) == 3 or matrizAux[1].count(1) == 3
-        ganaMaquina = matrizAux[0].count(-1) == 3 or matrizAux[1].count(-1) == 3
+        realPlayerWin = matrixAux[0].count(1) == 3 or matrixAux[1].count(1) == 3
+        iaPlayerWin = matrixAux[0].count(-1) == 3 or matrixAux[1].count(-1) == 3
 
-        if ganaPersona:
-            print("Felicidades!!! Ganaste")
+        if realPlayerWin:
+            print("----->Congrats!!! you win!!<-----")
             return True
-        if ganaMaquina:
-            print("Perdiste!!! =(")
+        if iaPlayerWin:
+            print("----->You lost!! better luck next time<-----")
             return True
 
-        # verificar empate
-        if self.verificarEmpate() == 0:
-            print("Empate!!!!!")
+        # verify draw
+        if self.verifyDraw() == 0:
+            print("----->Draw!! try again<-----")
             return True
 
         return False
 
-    def jugar(self):
+    def playrun(self):
         op = 0
         while True:
             os.system('clear')
-            self.__mostrar()
+            self.__show()
 
             if op % 2 == 0:
-                self.jugarPersona()
+                self.realPlayerTurn()
             else:
-                self.jugarMaquina()
+                self.iaTurn()
 
             op += 1
 
-            if self.verificarGanador():
+            if self.verifyWinner():
                 break
 
-        print("======= RESULTADO FINAL =======")
-        self.__mostrar()
+        print("=======> FINAL RESULT <=======")
+        self.__show()

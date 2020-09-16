@@ -1,4 +1,4 @@
 from TicTacToe import TicTacToe
 
-juego = TicTacToe()
-juego.jugar()
+newGame = TicTacToe()
+newGame.playrun()
