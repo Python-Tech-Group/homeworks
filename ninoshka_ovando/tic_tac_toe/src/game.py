@@ -1,7 +1,6 @@
 from src.menu import Menu
 from src.player import Player
 from src.board import Board
-import random
 
 
 class Game(object):
