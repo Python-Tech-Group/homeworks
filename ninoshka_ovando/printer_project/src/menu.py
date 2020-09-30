@@ -1,7 +1,7 @@
 class Menu(object):
 
     def __init__(self):
-        print("Welcome to Printed Shares")
+        print("Welcome to Printed Shapes")
         print("=========================================================")
         print("Let's go to start!!")
         print("\n")
