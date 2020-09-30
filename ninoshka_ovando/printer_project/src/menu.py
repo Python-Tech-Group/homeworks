@@ -76,4 +76,5 @@ class Menu(object):
 
     def print_figure(self, figures):
         for figure in figures:
-            print(figure.output_share)
+            print(figure.name)
+            print(figure.output_shape)

@@ -1,21 +1,17 @@
-RECTANGLE_5_4 = "Rectangle\n"\
-                "%%%%%\n"\
+RECTANGLE_5_4 = "%%%%%\n"\
                 "%%%%%\n"\
                 "%%%%%\n"\
                 "%%%%%\n"
 
-RECTANGLE_7_3 = "Rectangle\n"\
-                "*******\n"\
+RECTANGLE_7_3 = "*******\n"\
                 "*******\n"\
                 "*******\n"
 
-TRIANGLE_3 = "Triangle\n"\
-             "  %\n"\
+TRIANGLE_3 = "  %\n"\
              " %%%\n"\
              "%%%%%\n"
 
-TRIANGLE_9 = "Triangle\n"\
-             "        *\n"\
+TRIANGLE_9 = "        *\n"\
              "       ***\n"\
              "      *****\n"\
              "     *******\n"\
@@ -25,15 +21,13 @@ TRIANGLE_9 = "Triangle\n"\
              " ***************\n"\
              "*****************\n"
 
-RHOMBUS_3 = "Rhombus\n"\
-            "  *\n"\
+RHOMBUS_3 = "  *\n"\
             " ***\n"\
             "*****\n"\
             " ***\n"\
             "  *\n"
 
-RHOMBUS_9 = "Rhombus\n"\
-            "        %\n"\
+RHOMBUS_9 = "        %\n"\
             "       %%%\n"\
             "      %%%%%\n"\
             "     %%%%%%%\n"\
