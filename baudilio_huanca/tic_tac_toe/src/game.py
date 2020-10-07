@@ -26,7 +26,7 @@ class Game:
                 result = '*** Congratulations ! You won ! ***'
                 break
             elif self.computer_move(self)[1]:
-                result = '=== You lose ! =='
+                result = '=== You lose! =='
                 break
         self.board.print_board()
         print(result)
@@ -37,22 +37,28 @@ class Game:
 
     def computer_move(self):
         move = -1
-        # If I can win, others don't matter.
+        self.__can_win(move)
+        if move == -1:
+            self.__can_win_block_player(move)
+        if move == -1:
+            self.__take_one_place(move)
+        return self.board.make_move(self.player2, move)
+
+    def __can_win(self, move):
         for i in range(1, 10):
             if self.board.make_move(self.player2, i, True)[1]:
                 move = i
                 break
-        if move == -1:
-            # If player can win, block him.
-            for i in range(1, 10):
-                if self.board.make_move(self.player1, i, True)[1]:
-                    move = i
+
+    def __can_win_block_player(self, move):
+        for i in range(1, 10):
+            if self.board.make_move(self.player1, i, True)[1]:
+                move = i
+                break
+
+    def __take_one_place(self, move):
+        for tup in self.board.moves:
+            for mv in tup:
+                if move == -1 and self.board.can_move(self.player2, mv):
+                    move = mv
                     break
-        if move == -1:
-            # Otherwise, try to take one of desired places.
-            for tup in self.board.moves:
-                for mv in tup:
-                    if move == -1 and self.board.can_move(self.player2, mv):
-                        move = mv
-                        break
-        return self.board.make_move(self.player2, move)
