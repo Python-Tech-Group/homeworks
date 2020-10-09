@@ -20,8 +20,6 @@ class Coche(Vehiculo):
             self.velocidad, self.cilindrada)
 
 
-# Completa el ejercicio aquí
-
 class Camioneta(Coche):
 
     def __init__(self, color, ruedas, velocidad, cilindrada, carga):
@@ -69,7 +67,7 @@ def catalogar(vehiculos, ruedas=None):
         print("\nSe han encontrado {} vehículos con {} ruedas:".format(
             contador, ruedas))
 
-    # Segnda pasada, mostrar vehículos
+    
     for v in vehiculos:
         if ruedas == None:
             print(type(v).__name__, v)
