@@ -65,7 +65,7 @@ class Management(object):
 
 
     def start_program(self):
-        # Start Playing
+
         continue_running = True
 
         while continue_running:

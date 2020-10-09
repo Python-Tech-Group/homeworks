@@ -26,7 +26,6 @@ class Test(unittest.TestCase):
 
         self.assertEqual(contract.__str__(), CONTRACT_16YEAR)
 
-
     def test_piecework_with_20_clients(self):
 
         date_str = '2000/01/01'
@@ -37,7 +36,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(piecework.__str__(), PIECEWORK_20_CLIENTS)
 
-    def test_piecework_with_20_clients(self):
+    def test_practitioner_with_80_evaluation(self):
         date_str = '2000/01/01'
         format_str = '%Y/%m/%d'
         datetime_temploral = datetime.datetime.strptime(date_str, format_str)

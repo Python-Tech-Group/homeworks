@@ -1,7 +1,7 @@
 from json import loads
 from os.path import join
 from src.path import PATH
-from datetime import date, datetime
+from datetime import date
 
 
 DATA = loads(open(join(PATH, 'config.json')).read())
@@ -22,15 +22,10 @@ class Employee(object):
         print(self.date_start)
         print(type(self.date_start))
         print(self.date_start.strftime("%Y"))
-        #date_temporal = str(self.date_start.month) + "/" + str(self.date_start.day) + "/" + str(self.date_start.year)
         return '{} {} {} {}'.format("\nCI: " + self.ci,
-                                "\nName: " + self.name,
-                                "\nLast Name: " + self.last_name,
-                                "\nStart Date: " + self.date_start.strftime("%Y/%m/%d"))
-        #return "%s %s %s %s" % ("\nCI: " + self.ci,
-        #                        "\nName: " + self.name,
-        #                        "\nLast Name: " + self.last_name,
-        #                        "\nStart Year: " + f"{self.date_start:%Y-%m-%d}")
+                                    "\nName: " + self.name,
+                                    "\nLast Name: " + self.last_name,
+                                    "\nStart Date: " + self.date_start.strftime("%Y/%m/%d"))
 
 
 class Contract(Employee):
@@ -69,7 +64,7 @@ class Contract(Employee):
 
 class Piecework(Employee):
 
-    def __init__(self, ci, name, last_name,date_start,  client_number=0):
+    def __init__(self, ci, name, last_name, date_start,  client_number=0):
         super().__init__(ci, name, last_name, date_start)
         self.salary = 0.0
         self.client_number = client_number

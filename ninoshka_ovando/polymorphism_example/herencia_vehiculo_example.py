@@ -67,7 +67,7 @@ def catalogar(vehiculos, ruedas=None):
         print("\nSe han encontrado {} vehículos con {} ruedas:".format(
             contador, ruedas))
 
-    
+
     for v in vehiculos:
         if ruedas == None:
             print(type(v).__name__, v)
